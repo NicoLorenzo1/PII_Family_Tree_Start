@@ -10,14 +10,16 @@ namespace Library
 
         private List<Node> children = new List<Node>();
 
-        public int Number {
+        public int Number
+        {
             get
             {
                 return this.number;
             }
         }
 
-        public ReadOnlyCollection<Node> Children { 
+        public ReadOnlyCollection<Node> Children
+        {
             get
             {
                 return this.children.AsReadOnly();
@@ -33,6 +35,11 @@ namespace Library
         {
             this.children.Add(n);
         }
-        
+
+        public void addPerson(string name, int year)
+        {
+            this.person.add(name, year);
+        }
+
     }
 }
