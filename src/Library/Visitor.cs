@@ -1,7 +1,18 @@
 namespace Library
 {
-    public void visitador(Visitor visitor)
+    public class Visitor
     {
-        visitor.Visit(this);
+        public int _contador = 0;
+
+        public void Visit(Node nodo)
+        {
+            this._contador += nodo.person.age;
+
+
+            foreach (Node node in nodo.Children)
+            {
+                node.Accept(this);
+            }
+        }
     }
 }

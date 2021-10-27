@@ -1,5 +1,6 @@
 ﻿using System;
 using Library;
+using System.Collections.Generic;
 
 namespace Program
 {
@@ -7,14 +8,19 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Node n1 = new Node("persona1", 19);
-            Node n2 = new Node("persona2", 10);
-            Node n3 = new Node("persona3", 80);
-            Node n4 = new Node("persona4", 32);
-            Node n5 = new Node("persona5", 26);
-            Node n6 = new Node("persona6", 21);
-            Node n7 = new Node("persona7", 6);
 
+            //creo los nodos con sus correspondientes personas 
+            Node n1 = new Node(1, new Person("Nicolas", "Lorenzo", 19));
+            Node n2 = new Node(2, new Person("Martin", "Perez", 10));
+            Node n3 = new Node(3, new Person("Facundo", "Alvarez", 11));
+            Node n4 = new Node(4, new Person("Valeria", "Nuñez", 19));
+            Node n5 = new Node(5, new Person("Anthony", "Rivera", 17));
+            Node n6 = new Node(6, new Person("Olivia", "Suarez", 29));
+            Node n7 = new Node(7, new Person("Santiago", "De Oliveira", 69));
+            Node n8 = new Node(8, new Person("Lucas", "Cabrera", 29));
+
+
+            //el nodo1 agrega como hijo al nodo2 y nodo3
             n1.AddChildren(n2);
             n1.AddChildren(n3);
 
@@ -23,8 +29,15 @@ namespace Program
 
             n3.AddChildren(n6);
             n3.AddChildren(n7);
+            n3.AddChildren(n8);
+
 
             // visitar el árbol aquí
+            Visitor v = new Visitor();
+            v.Visit(n1);
+
+            Console.WriteLine("Suma total de las edades: " + v._contador);
         }
+
     }
 }

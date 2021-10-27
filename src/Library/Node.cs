@@ -10,6 +10,21 @@ namespace Library
 
         private List<Node> children = new List<Node>();
 
+        private Person _person;
+        public Person person
+        {
+            get
+            {
+                return _person;
+            }
+            set
+            {
+                if (value is not null)
+                {
+                    _person = value;
+                }
+            }
+        }
         public int Number
         {
             get
@@ -26,9 +41,10 @@ namespace Library
             }
         }
 
-        public Node(int number)
+        public Node(int number, Person person)
         {
             this.number = number;
+            this.person = person;
         }
 
         public void AddChildren(Node n)
@@ -36,10 +52,10 @@ namespace Library
             this.children.Add(n);
         }
 
-        public void addPerson(string name, int year)
-        {
-            this.person.add(name, year);
-        }
 
+        public void Accept(Visitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }
